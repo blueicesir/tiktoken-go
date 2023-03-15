@@ -12,7 +12,10 @@ const ENDOFPROMPT string = "<|endofprompt|>"
 
 var MODEL_TO_ENCODING = map[string]string{
 	// chat
+	"gpt-4":"cl100k_base",
+	"gpt-4-32k":"cl100k_base",
 	"gpt-3.5-turbo": "cl100k_base",
+	"gpt-3.5-trubo-0301":"cl100k_base",
 	// text
 	"text-davinci-003": "p50k_base",
 	"text-davinci-002": "p50k_base",
@@ -99,6 +102,7 @@ func cl100k_base() (*Encoding, error) {
 		FIM_SUFFIX:  100260,
 		ENDOFPROMPT: 100276,
 	}
+
 	return &Encoding{
 		Name:           "cl100k_base",
 		PatStr:         `(?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\r\n\p{L}\p{N}]?\p{L}+|\p{N}{1,3}| ?[^\s\p{L}\p{N}]+[\r\n]*|\s*[\r\n]+|\s+(?!\S)|\s+`,
